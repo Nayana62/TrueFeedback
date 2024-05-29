@@ -24,6 +24,10 @@ Zod is a library used to define schemas (blueprints) for your data and then vali
 
 "React Email" utilizes the React JavaScript library to design email templates for various purposes such as email marketing campaigns or transactional emails. By leveraging React's component-based architecture and JSX syntax, developers can create dynamic and visually appealing email templates with reusable components. This approach streamlines the process of designing and maintaining emails, offering flexibility and efficiency. Once designed, these React email templates can be rendered and sent through email service providers or custom email sending solutions.
 
+### [NextAuth](https://next-auth.js.org)
+
+"NextAuth" is a complete authentication solution for Next.js applications. It provides a simple and flexible way to implement sign-in functionality, supporting multiple authentication providers (OAuth, email, credentials, etc.). NextAuth helps by handling authentication flows, maintaining session states, and securing routes, making it easier to manage user authentication and authorization in your Next.js app.
+
 ---
 
 ## Important Points
