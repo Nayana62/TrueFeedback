@@ -16,6 +16,16 @@ Zod is a library used to define schemas (blueprints) for your data and then vali
 - **Validation**: It helps you catch errors early by validating data before it's used, preventing bugs caused by unexpected data shapes.
 - **Simplicity**: Zod is straightforward to use with clear syntax, making it easy to integrate into your React projects.
 
+### [Resend](https://resend.com)
+
+"Resend" is an email API for developers, providing functionality to send emails programmatically. It's commonly used in email systems and applications for scenarios like verification emails, password reset links, or notifications. This API allows developers to integrate email sending capabilities into their applications seamlessly, offering flexibility and control over the email sending process.
+
+### [react-email](https://react.email)
+
+"React Email" utilizes the React JavaScript library to design email templates for various purposes such as email marketing campaigns or transactional emails. By leveraging React's component-based architecture and JSX syntax, developers can create dynamic and visually appealing email templates with reusable components. This approach streamlines the process of designing and maintaining emails, offering flexibility and efficiency. Once designed, these React email templates can be rendered and sent through email service providers or custom email sending solutions.
+
+---
+
 ## Important Points
 
 ### Backend Application Architecture with Next.js
