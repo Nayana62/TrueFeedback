@@ -9,18 +9,24 @@ export async function middleware(request: NextRequest) {
 
   if (
     (token &&
-      (url.pathname.startsWith("/sign-in") ||
-        url.pathname.startsWith("/sign-up") ||
-        url.pathname.startsWith("/verify"))) ||
+      (url.pathname.startsWith("/signin") ||
+        url.pathname.startsWith("/signup") ||
+        url.pathname.startsWith("/verify-code"))) ||
     url.pathname.startsWith("/home")
   ) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
   if (!token && url.pathname.startsWith("/dashboard")) {
-    return NextResponse.redirect(new URL("/sign-in", request.url));
+    return NextResponse.redirect(new URL("/signin", request.url));
   }
 }
 
 export const config = {
-  matcher: ["/sign-in", "/sign-up", "/", "/verify/:path*", "/dashboard/:path*"],
+  matcher: [
+    "/signin",
+    "/signup",
+    "/",
+    "/verify-code/:path*",
+    "/dashboard/:path*",
+  ],
 };

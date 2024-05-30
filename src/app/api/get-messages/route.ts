@@ -30,10 +30,10 @@ export async function GET(request: Request) {
     if (!user || user.length === 0) {
       return Response.json(
         {
-          success: false,
-          message: "User Not Found",
+          success: true,
+          message: "no messages found",
         },
-        { status: 404 }
+        { status: 200 }
       );
     }
     return Response.json(
@@ -47,7 +47,7 @@ export async function GET(request: Request) {
     return Response.json(
       {
         success: false,
-        message: "Error  while fetching messages",
+        message: "Error while fetching messages",
       },
       { status: 404 }
     );
