@@ -10,13 +10,11 @@ export const authOptions: NextAuthOptions = {
       id: "credentials",
       name: "Credentials",
       credentials: {
-        // identifier: {
-        //   label: "Username/Email",
-        //   type: "text",
-        //   placeholder: "Email",
-        // },
-        // password: { label: "Password", type: "password" },
-        email: { label: "Email", type: "text" },
+        identifier: {
+          label: "Username/Email",
+          type: "text",
+          placeholder: "Email",
+        },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials: any): Promise<any> {
@@ -30,7 +28,7 @@ export const authOptions: NextAuthOptions = {
           });
           // console.log("in options",user);
           if (!user) {
-            throw new Error("No user found with this mail");
+            throw new Error("No user found with this Email/username");
           }
           if (!user.isVerified) {
             throw new Error("Please verify your account before login");

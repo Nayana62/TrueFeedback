@@ -17,6 +17,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
 import * as z from "zod";
@@ -32,7 +33,7 @@ const parseStringMessages = (messageString: string): string[] => {
 };
 
 const initialMessageString =
-  "What's your favorite movie?||Do you have any pets?||What's your dream job?";
+  "What's your favorite movie?||Do you have any pets?||What's your dream job?||What’s your favorite way to spend a day off?||If you could learn any skill instantly, what would it be?||What’s one book that you think everyone should read?||If you could witness any event in history, which one would you choose?||What’s the best piece of advice you’ve ever received?||What’s one thing you’re looking forward to in the next month?||What’s your favorite meal to cook and why?||What’s the most beautiful place you’ve ever visited?||What hobby would you get into if time and money weren’t an issue?||What’s your favorite animal and why?||If you could speak another language fluently, which one would it be?||What’s a song that you can listen to on repeat?||Who has been the most influential person in your life?||What’s a movie that you can watch over and over without ever getting tired of?||What’s your favorite season, and why do you prefer it?||If you had the opportunity to invent a new technology, what would it do?||What’s something you’ve always wanted to try but have never found the time for?||What’s the best vacation you’ve ever had?||If you could start a charity, what cause would it support?||What’s a small act of kindness you were once shown that you’ll never forget?";
 
 export default function SendMessage() {
   const params = useParams<{ username: string }>();
@@ -106,7 +107,9 @@ export default function SendMessage() {
             name="content"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Send Anonymous Message to @{username}</FormLabel>
+                <FormLabel className="text-black">
+                  Send Anonymous Message to @{username}
+                </FormLabel>
                 <FormControl>
                   <Textarea
                     placeholder="Write your anonymous message here"
@@ -163,16 +166,18 @@ export default function SendMessage() {
                 </Button>
               ))
             )} */}
-            {parseStringMessages(initialMessageString).map((message) => (
-              <Button
-                key={message}
-                variant="outline"
-                className="mb-2"
-                onClick={() => handleMessageClick(message)}
-              >
-                {message}
-              </Button>
-            ))}
+            <ScrollArea className="h-56">
+              {parseStringMessages(initialMessageString).map((message) => (
+                <Button
+                  key={message}
+                  variant="outline"
+                  className="my-2 mr-4 w-full"
+                  onClick={() => handleMessageClick(message)}
+                >
+                  {message}
+                </Button>
+              ))}
+            </ScrollArea>
           </CardContent>
         </Card>
       </div>

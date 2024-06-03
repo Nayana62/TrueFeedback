@@ -17,8 +17,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { signInSchema } from "@/schemas/signInSchema";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 export default function SignInForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
 
@@ -68,14 +71,14 @@ export default function SignInForm() {
           <p className="mb-4">Sign in to continue your secret conversations</p>
         </div>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               name="identifier"
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email/Username</FormLabel>
-                  <Input {...field} />
+                  <FormLabel className="text-black">Email/Username</FormLabel>
+                  <Input {...field} required />
                   <FormMessage />
                 </FormItem>
               )}
@@ -85,14 +88,26 @@ export default function SignInForm() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <Input type="password" {...field} />
+                  <FormLabel className="text-black">Password</FormLabel>
+                  <Input type="password" {...field} required />
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button className="w-full" type="submit">
-              Sign In
+            <div>
+              <Link href={"/forgot-password"}>
+                <p className="text-sm">Forgot password?</p>
+              </Link>
+            </div>
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Please wait
+                </>
+              ) : (
+                "Sign in"
+              )}
             </Button>
           </form>
         </Form>
