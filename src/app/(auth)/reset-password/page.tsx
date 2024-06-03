@@ -13,13 +13,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import {
-  useParams,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
-import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import { resetPasswordSchema } from "@/schemas/resetPasswordSchema";
 import axios, { AxiosError } from "axios";
 import { ApiResponse } from "@/types/ApiResponse";
@@ -29,9 +24,17 @@ export default function ResetPasswordPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
+  const [resetToken, setResetToken] = useState<string | null>(null);
 
-  const searchParams = useSearchParams();
-  const resetToken = searchParams.get("resetToken");
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("resetToken");
+    if (token) {
+      setResetToken(token);
+    }
+  }, []);
+
+  console.log("resetToken", resetToken);
 
   const form = useForm<z.infer<typeof resetPasswordSchema>>({
     resolver: zodResolver(resetPasswordSchema),

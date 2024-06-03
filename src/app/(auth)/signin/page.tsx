@@ -34,6 +34,7 @@ export default function SignInForm() {
   });
 
   const onSubmit = async (data: z.infer<typeof signInSchema>) => {
+    setIsSubmitting(true);
     const result = await signIn("credentials", {
       redirect: false,
       identifier: data.identifier,
@@ -55,6 +56,7 @@ export default function SignInForm() {
         });
       }
     }
+    setIsSubmitting(false);
 
     if (result?.url) {
       router.replace("/dashboard");
