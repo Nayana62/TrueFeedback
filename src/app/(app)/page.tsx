@@ -9,8 +9,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -52,7 +50,7 @@ export default function Home() {
                   <CardHeader>
                     <CardTitle>{message.title}</CardTitle>
                   </CardHeader>
-                  <CardContent className="flex flex-col md:flex-row items-start space-y-2 md:space-y-0 md:space-x-4">
+                  <CardContent className="flex items-center space-x-2 space-y-2 md:space-y-0 md:space-x-4">
                     <Mail className="flex-shrink-0" />
                     <div>
                       <p>{message.content}</p>

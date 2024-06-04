@@ -64,9 +64,9 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-800">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+      <div className="w-full max-w-md p-8 space-y-4 md:space-y-8 bg-white rounded-lg shadow-md mx-2 md:mx-0">
         <div className="text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
+          <h1 className="text-3xl md:text-4xl text-start font-extrabold tracking-tight lg:text-5xl mb-2">
             Forgot Password
           </h1>
         </div>
