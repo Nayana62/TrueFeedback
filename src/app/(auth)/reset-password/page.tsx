@@ -20,21 +20,19 @@ import axios, { AxiosError } from "axios";
 import { ApiResponse } from "@/types/ApiResponse";
 import { Loader2 } from "lucide-react";
 
-export default function ResetPasswordPage() {
+interface ResetPasswordPageProps {
+  searchParams: {
+    resetToken?: string;
+  };
+}
+
+export default function ResetPasswordPage({
+  searchParams,
+}: ResetPasswordPageProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
-  const [resetToken, setResetToken] = useState<string | null>(null);
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get("resetToken");
-    if (token) {
-      setResetToken(token);
-    }
-  }, []);
-
-  console.log("resetToken", resetToken);
+  const { resetToken } = searchParams;
 
   const form = useForm<z.infer<typeof resetPasswordSchema>>({
     resolver: zodResolver(resetPasswordSchema),
